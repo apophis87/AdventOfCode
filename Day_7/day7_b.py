@@ -14,25 +14,29 @@ with open('rules.txt') as file:
         rules.append(rule)
 
 # print(rules)
-
+# Recursive method
 def checkRule(listofrules, bag):
+    # Find the rule
     for rule in listofrules:
         if rule[0] == bag:
             break
-
+    # empty bag contains the string 'no other'
+    # since the word 'bag' has already been removed
     if rule[1] == 'no other':
-        return 2
+        return 0
     else:
+        # Collect the terms in a list and call the method
+        # recursively until 'no other' is found in the rule
         terms = []
         for item in rule[1:]:
-            num = int(item.split()[0])
-            bag = ' '.join(item.split()[1:])
-            terms = terms + [num*checkRule(rules, bag)]
+            num_sub = int(item.split()[0])
+            bag_sub = ' '.join(item.split()[1:])
+            print(num_sub, bag_sub)
+            terms = terms + [num_sub*(1 + checkRule(rules, bag_sub))]
         return sum(terms)
 
 
 input = r'shiny gold'
-
-print(checkRule(rules, input))
+print('return', checkRule(rules, input))
 
 
