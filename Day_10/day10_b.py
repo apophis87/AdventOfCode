@@ -12,10 +12,7 @@ adapters.sort()
 # Add last number (highest since the list is sorted) +3
 adapters.append(adapters[-1] + 3)
 print(adapters)
-# Initial values of the differences
-ones = 0
-twos = 0
-threes = 1  # because of the internal adapter having always three more
+
 
 # Go through the list recording differeces in sorted list
 removables = []
@@ -23,24 +20,25 @@ for k in range(1, len(adapters)-1):
     diff = adapters[k + 1] - adapters[k - 1]
     if diff <= 3:
         removables.append(adapters[k])
-total = 0
+
+
+
+
+total = 1
+count = 1
 print(removables)
-for l in range(len(removables)):
-    count = 0
-    for item in itertools.combinations(removables, l):
-        drop = False
-        a = adapters.copy()
-        for element in item:
-            a.remove(element)
-            # print('Remove ', element )
-        # print(a)
-        for s in range(len(a)-1):
-            gap = a[s+1]-a[s]
-            if gap > 3:
-                drop = True
-                break
-        if drop == False:
-            count = count + 1
-    total = total + count
-    print(len(removables)-l)
+removables.append(removables[-1]+4)
+for l in range(len(removables)-1):
+    if removables[l+1] - removables[l] <= 3:
+        # print(removables[l+1])
+        count = count + 1
+    else:
+        if count == 3:
+            total = total * 7
+        if count <= 2:
+            total = total * 2**count
+
+        count = 1
+
+
 print(total)
