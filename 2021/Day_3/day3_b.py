@@ -58,7 +58,7 @@ if __name__ == '__main__':
     ogr = apply_criteria(input_data, most_of_bits)
     csr = apply_criteria(input_data, least_of_bits)
     lsr = ogr * csr
-    print(f"Advent of Code Day 3 Part 1 answer: {lsr}")
+    print(f"Advent of Code Day 3 Part 2 answer: {lsr}")
 
 
 
