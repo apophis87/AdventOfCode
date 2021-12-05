@@ -68,13 +68,13 @@ for line in diagonal_lines_points:
     for point in line:
         map_lines[point[0]][point[1]] += 1
 
-# Show map
-import numpy as np
-f = np.array(map_lines)
-import matplotlib.pyplot as plt
-plt.imshow(f, origin='upper')
-plt.colorbar()
-plt.show()
+# # Show map
+# import numpy as np
+# f = np.array(map_lines)
+# import matplotlib.pyplot as plt
+# plt.imshow(f, origin='upper')
+# plt.colorbar()
+# plt.show()
 
 # Count overlapping points
 overlaps = 0
