@@ -14,4 +14,28 @@ with open('input.txt') as file:
 
     print("Solution part 1: ", priorities_sum)
 
+    # Part 2
+
+    group_priorities = []
+    counter = 0
+
+    for rucksack in rucksacks:
+        if counter == 0:
+            item_types = set(priorities)
+
+        item_types = item_types.intersection(rucksack)
+        if counter == 2:
+            group_priorities.append(item_types.pop())
+            counter = 0
+        else:
+            counter += 1
+
+    priorities_sum2 = 0
+    for item in group_priorities:
+        priorities_sum2 = priorities_sum2 + priorities.find(item) + 1
+
+    print("Solution part 2: ", priorities_sum2)
+
+
+
 
