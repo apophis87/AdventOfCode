@@ -20,6 +20,8 @@ stacks = [list('SLW'),
           list('BZTFHNDJ'),
           list('HLQNBFT')]
 
+stacks2 = stacks.copy()
+
 with open('input.txt') as file:
     # Read the values
     moves = file.read().splitlines()
@@ -37,9 +39,17 @@ with open('input.txt') as file:
         stacks[d] = stacks[d] + stacks[s][-n:][::-1]  # add n last items to destination stack (reversed order)
         stacks[s] = stacks[s][:-n]  # update source stack with leftover items
 
+        stacks2[d] = stacks2[d] + stacks2[s][-n:]  # add n last items to destination stack (normal order)
+        stacks2[s] = stacks2[s][:-n]  # update source stack with leftover items
+
     answer = ''
     for stack in stacks:
         answer += stack.pop()
 
-    print(answer)
+    answer2 = ''
+    for stack in stacks2:
+        answer2 += stack.pop()
+
+    print("Solution part 1: ", answer)
+    print("Solution part 2: ", answer2)
 
